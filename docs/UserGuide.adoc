@@ -18,6 +18,7 @@ Please refer to the <<DeveloperGuide#SettingUp, Setting up>> section to learn ho
 .. If the `Project Explorer` is not visible, press ALT+1 for Windows/Linux, CMD+1 for macOS to open the `Project Explorer` tab
 . Go to the `src` folder and locate the `AddressBook` file
 . Right click the file and select `Run AddressBook.main()`
+. If you are unable to see the option `Run AddressBook.main()`, you have to right click the 'src' folder and select the ' Mark Directory as'option, followed by 'Sources Root' option
 . The program now should run on the `Console` (usually located at the bottom side)
 . Now you can interact with the program through the `Console`
 
