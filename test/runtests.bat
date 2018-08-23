@@ -1,5 +1,8 @@
 @ECHO OFF
 
+REM change current directory to the location of this script
+pushd %~dp0
+
 REM create bin directory if it doesn't exist
 if not exist ..\bin mkdir ..\bin
 
@@ -28,3 +31,6 @@ java -classpath ..\bin seedu.addressbook.AddressBook < input.txt >> actual.txt
 
 REM compare the output to the expected output
 FC actual.txt expected.txt
+
+REM return to previous directory
+popd
