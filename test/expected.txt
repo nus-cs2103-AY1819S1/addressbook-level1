@@ -52,8 +52,8 @@
 || Enter command: || [Command entered:  sfdfd]
 || Invalid command format: sfdfd 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || find: Finds all persons whose names contain any of the specified keywords (case-sensitive) and displays them as a list with index numbers.
 || 	Parameters: KEYWORD [MORE_KEYWORDS]
@@ -82,94 +82,135 @@
 || Enter command: || [Command entered:  add wrong args wrong args]
 || Invalid command format: add 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || ===================================================
-|| Enter command: || [Command entered:  add Valid Name p/12345 valid@email.butNoPrefix]
+|| Enter command: || [Command entered:  add Valid Name p/12345 valid@email.butNoPrefix t/@validTele]
 || Invalid command format: add 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || ===================================================
-|| Enter command: || [Command entered:  add Valid Name 12345 e/valid@email.butPhonePrefixMissing]
+|| Enter command: || [Command entered:  add Valid Name 12345 e/valid@email.butPhonePrefixMissing t/@validTele]
 || Invalid command format: add 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || ===================================================
-|| Enter command: || [Command entered:  add []\[;] p/12345 e/valid@e.mail]
+|| Enter command: || [Command entered:  add Valid Name p/12345 e/valid@email.butTelePrefixMissing @ValidTeleButNoPrefix]
 || Invalid command format: add 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || ===================================================
-|| Enter command: || [Command entered:  add Valid Name p/not_numbers e/valid@e.mail]
+|| Enter command: || [Command entered:  add []\[;] p/12345 e/valid@e.mail t/@validTele]
 || Invalid command format: add 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || ===================================================
-|| Enter command: || [Command entered:  add Valid Name p/12345 e/notAnEmail]
+|| Enter command: || [Command entered:  add Valid Name p/not_numbers e/valid@e.mail t/@validTele]
 || Invalid command format: add 
 || add: Adds a person to the address book.
-|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL
-|| 	Example: add John Doe p/98765432 e/johnd@gmail.com
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
 || 
 || ===================================================
-|| Enter command: || [Command entered:  add Adam Brown p/111111 e/adam@gmail.com]
-|| New person added: Adam Brown, Phone: 111111, Email: adam@gmail.com
+|| Enter command: || [Command entered:  add Valid Name p/12345 e/notAnEmail t/@validTele]
+|| Invalid command format: add 
+|| add: Adds a person to the address book.
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  add Valid Name p/12345 e/valid@e.mail t/invalidTele]
+|| Invalid command format: add 
+|| add: Adds a person to the address book.
+|| 	Parameters: NAME p/PHONE_NUMBER e/EMAIL t/TELEGRAM
+|| 	Example: add John Doe p/98765432 e/johnd@gmail.com t/@johndoe
+|| 
+|| ===================================================
+|| Enter command: || [Command entered:  add Adam Brown p/111111 e/adam@gmail.com t/@adam_brown]
+|| New person added: Adam Brown, Phone: 111111, Email: adam@gmail.com, Telegram: @adam_brown
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
 || 
 || 1 persons found!
 || ===================================================
-|| Enter command: || [Command entered:  add Betsy Choo p/222222 e/benchoo@nus.edu.sg]
-|| New person added: Betsy Choo, Phone: 222222, Email: benchoo@nus.edu.sg
+|| Enter command: || [Command entered:  add Betsy Choo p/222222 e/benchoo@nus.edu.sg t/@BetsyChoo]
+|| New person added: Betsy Choo, Phone: 222222, Email: benchoo@nus.edu.sg, Telegram: @BetsyChoo
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
-|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
 || 
 || 2 persons found!
 || ===================================================
-|| Enter command: || [Command entered:  add Charlie Dickson e/charlie.d@nus.edu.sg p/333333]
-|| New person added: Charlie Dickson, Phone: 333333, Email: charlie.d@nus.edu.sg
+|| Enter command: || [Command entered:  add Charlie Dickson p/333333 t/@charlie_dickson e/charlie.d@nus.edu.sg]
+|| New person added: Charlie Dickson, Phone: 333333, Email: charlie.d@nus.edu.sg, Telegram: @charlie_dickson
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
-|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
 || 
 || 3 persons found!
 || ===================================================
-|| Enter command: || [Command entered:  add Dickson Ee e/dickson@nus.edu.sg p/444444]
-|| New person added: Dickson Ee, Phone: 444444, Email: dickson@nus.edu.sg
+|| Enter command: || [Command entered:  add Dickson Ee e/dickson@nus.edu.sg p/444444 t/@dickson_ee]
+|| New person added: Dickson Ee, Phone: 444444, Email: dickson@nus.edu.sg, Telegram: @dickson_ee
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
-|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
-|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
+|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
 || 
 || 4 persons found!
 || ===================================================
-|| Enter command: || [Command entered:  add Esther Potato p/555555 e/esther@notreal.potato]
-|| New person added: Esther Potato, Phone: 555555, Email: esther@notreal.potato
+|| Enter command: || [Command entered:  add Esther Potato e/esther@notreal.potato t/@esther_potato p/555555]
+|| New person added: Esther Potato, Phone: 555555, Email: esther@notreal.potato, Telegram: @esther_potato
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
-|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
-|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
-|| 	5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
+|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
+|| 	5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato Telegram: @esther_potato
 || 
 || 5 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  add Fredrick Goh t/@fred_goh p/666666 e/fred@soreal.goh]
+|| New person added: Fredrick Goh, Phone: 666666, Email: fred@soreal.goh, Telegram: @fred_goh
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
+|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
+|| 	5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato Telegram: @esther_potato
+|| 	6. Fredrick Goh  Phone Number: 666666  Email: fred@soreal.goh Telegram: @fred_goh
+|| 
+|| 6 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  add Greg Ho t/@greg_ho e/greg@horeal.ho p/777777]
+|| New person added: Greg Ho, Phone: 777777, Email: greg@horeal.ho, Telegram: @greg_ho
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
+|| 	4. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
+|| 	5. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato Telegram: @esther_potato
+|| 	6. Fredrick Goh  Phone Number: 666666  Email: fred@soreal.goh Telegram: @fred_goh
+|| 	7. Greg Ho  Phone Number: 777777  Email: greg@horeal.ho Telegram: @greg_ho
+|| 
+|| 7 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find]
 || 
@@ -188,19 +229,19 @@
 || 0 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find Betsy]
-|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
+|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
 || 
 || 1 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find Dickson]
-|| 	1. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
-|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	1. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
 || 
 || 2 persons found!
 || ===================================================
 || Enter command: || [Command entered:  find Charlie Betsy]
-|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	2. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	2. Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
 || 
 || 2 persons found!
 || ===================================================
@@ -236,37 +277,43 @@
 || The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
-|| Deleted Person: Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg
+|| Deleted Person: Charlie Dickson  Phone Number: 333333  Email: charlie.d@nus.edu.sg Telegram: @charlie_dickson
 || ===================================================
 || Enter command: || [Command entered:  delete 2]
 || Person could not be found in address book
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
-|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	3. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
-|| 	4. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
+|| 	4. Esther Potato  Phone Number: 555555  Email: esther@notreal.potato Telegram: @esther_potato
+|| 	5. Fredrick Goh  Phone Number: 666666  Email: fred@soreal.goh Telegram: @fred_goh
+|| 	6. Greg Ho  Phone Number: 777777  Email: greg@horeal.ho Telegram: @greg_ho
 || 
-|| 4 persons found!
+|| 6 persons found!
 || ===================================================
 || Enter command: || [Command entered:  delete 4]
-|| Deleted Person: Esther Potato  Phone Number: 555555  Email: esther@notreal.potato
+|| Deleted Person: Esther Potato  Phone Number: 555555  Email: esther@notreal.potato Telegram: @esther_potato
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com
-|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	3. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	1. Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
+|| 	2. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	3. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
+|| 	4. Fredrick Goh  Phone Number: 666666  Email: fred@soreal.goh Telegram: @fred_goh
+|| 	5. Greg Ho  Phone Number: 777777  Email: greg@horeal.ho Telegram: @greg_ho
 || 
-|| 3 persons found!
+|| 5 persons found!
 || ===================================================
 || Enter command: || [Command entered:  delete 1]
-|| Deleted Person: Adam Brown  Phone Number: 111111  Email: adam@gmail.com
+|| Deleted Person: Adam Brown  Phone Number: 111111  Email: adam@gmail.com Telegram: @adam_brown
 || ===================================================
 || Enter command: || [Command entered:  list]
-|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg
-|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg
+|| 	1. Betsy Choo  Phone Number: 222222  Email: benchoo@nus.edu.sg Telegram: @BetsyChoo
+|| 	2. Dickson Ee  Phone Number: 444444  Email: dickson@nus.edu.sg Telegram: @dickson_ee
+|| 	3. Fredrick Goh  Phone Number: 666666  Email: fred@soreal.goh Telegram: @fred_goh
+|| 	4. Greg Ho  Phone Number: 777777  Email: greg@horeal.ho Telegram: @greg_ho
 || 
-|| 2 persons found!
+|| 4 persons found!
 || ===================================================
 || Enter command: || [Command entered:  clear]
 || Address book has been cleared!
