@@ -7,6 +7,7 @@ package seedu.addressbook;
  * ====================================================================
  */
 
+import java.awt.desktop.SystemEventListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -90,6 +91,7 @@ public class AddressBook {
     private static final String MESSAGE_STORAGE_FILE_CREATED = "Created new empty storage file: %1$s";
     private static final String MESSAGE_WELCOME = "Welcome to your Address Book!";
     private static final String MESSAGE_USING_DEFAULT_FILE = "Using default storage file : " + DEFAULT_STORAGE_FILEPATH;
+    private static final String MESSAGE_DELETE_CONFIRMATION = "Do you really want to delete this entry? 1 to confirm, 0 to cancel.";
 
     // These are the prefix strings to define the data type of a command parameter
     private static final String PERSON_DATA_PREFIX_PHONE = "p/";
@@ -507,9 +509,22 @@ public class AddressBook {
         if (!isDisplayIndexValidForLastPersonListingView(targetVisibleIndex)) {
             return MESSAGE_INVALID_PERSON_DISPLAYED_INDEX;
         }
+        if (!confirmDeletion()) {
+            return "Deletion cancelled.";
+        }
         final String[] targetInModel = getPersonByLastVisibleIndex(targetVisibleIndex);
         return deletePersonFromAddressBook(targetInModel) ? getMessageForSuccessfulDelete(targetInModel) // success
                                                           : MESSAGE_PERSON_NOT_IN_ADDRESSBOOK; // not found
+    }
+
+    private static boolean confirmDeletion() {
+        System.out.println(LINE_PREFIX + MESSAGE_DELETE_CONFIRMATION);
+        int response = SCANNER.nextInt();
+        if(response == 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
