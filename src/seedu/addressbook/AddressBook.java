@@ -208,14 +208,18 @@ public class AddressBook {
 
     public static void main(String[] args) {
         showWelcomeMessage();
-        processProgramArgs(args);
-        loadDataFromStorage();
+        initialProcessing(args);
         while (true) {
             String userCommand = getUserInput();
             echoUserCommand(userCommand);
             String feedback = executeCommand(userCommand);
             showResultToUser(feedback);
         }
+    }
+
+    private static void initialProcessing(String[] args) {
+        processProgramArgs(args);
+        loadDataFromStorage();
     }
 
     /*
