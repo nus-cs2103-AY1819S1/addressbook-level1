@@ -1145,6 +1145,17 @@ public class AddressBook {
         //TODO: implement a more permissive validation
     }
 
+    /**
+     * Returns true if the given string is a legal Telegram handle
+     *
+     * @param tele to be validated
+     * @return whether arg is a valid Telegram handle
+     */
+    private static boolean isPersonTeleValid(String tele) {
+        return tele.matches("@\\S+"); // Telegram handle is @[non-whitespace]
+        //TODO: implement a more permissive validation
+    }
+
 
     /*
      * ===============================================
