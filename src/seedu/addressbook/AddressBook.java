@@ -444,7 +444,10 @@ public class AddressBook {
      */
     private static String getMessageForSuccessfulAddPerson(String[] addedPerson) {
         return String.format(MESSAGE_ADDED,
-                getNameFromPerson(addedPerson), getPhoneFromPerson(addedPerson), getEmailFromPerson(addedPerson));
+                getNameFromPerson(addedPerson),
+                getPhoneFromPerson(addedPerson),
+                getEmailFromPerson(addedPerson),
+                getTeleFromPerson(addedPerson));
     }
 
     /**
@@ -674,7 +677,10 @@ public class AddressBook {
      */
     private static String getMessageForFormattedPersonData(String[] person) {
         return String.format(MESSAGE_DISPLAY_PERSON_DATA,
-                getNameFromPerson(person), getPhoneFromPerson(person), getEmailFromPerson(person));
+                getNameFromPerson(person),
+                getPhoneFromPerson(person),
+                getEmailFromPerson(person),
+                getTeleFromPerson(person));
     }
 
     /**
@@ -866,6 +872,15 @@ public class AddressBook {
     }
 
     /**
+     * Returns given person's Telegram handle
+     *
+     * @param person whose Telegram handle you want
+     */
+    private static String getTeleFromPerson(String[] person) {
+        return person[PERSON_DATA_INDEX_TELE];
+    }
+
+    /**
      * Creates a person from the given data.
      *
      * @param name of person
@@ -889,7 +904,10 @@ public class AddressBook {
      */
     private static String encodePersonToString(String[] person) {
         return String.format(PERSON_STRING_REPRESENTATION,
-                getNameFromPerson(person), getPhoneFromPerson(person), getEmailFromPerson(person));
+                getNameFromPerson(person),
+                getPhoneFromPerson(person),
+                getEmailFromPerson(person),
+                getTeleFromPerson(person));
     }
 
     /**
