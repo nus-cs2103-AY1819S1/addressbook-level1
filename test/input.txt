@@ -41,6 +41,10 @@
   add Esther Potato p/555555 e/esther@notreal.potato
   list
 
+  # should show that email is in lower case
+  add Rence e/yAnGyU43@gmail.com p/91253814
+  list
+
 ##########################################################
 # test find persons command
 ##########################################################

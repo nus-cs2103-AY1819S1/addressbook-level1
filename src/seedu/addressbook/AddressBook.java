@@ -1017,13 +1017,13 @@ public class AddressBook {
         // email is last arg, target is from prefix to end of string
         if (indexOfEmailPrefix > indexOfPhonePrefix) {
             return removePrefixSign(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
-                    PERSON_DATA_PREFIX_EMAIL);
+                    PERSON_DATA_PREFIX_EMAIL).toLowerCase();
 
         // email is middle arg, target is from own prefix to next prefix
         } else {
             return removePrefixSign(
                     encoded.substring(indexOfEmailPrefix, indexOfPhonePrefix).trim(),
-                    PERSON_DATA_PREFIX_EMAIL);
+                    PERSON_DATA_PREFIX_EMAIL).toLowerCase();
         }
     }
 

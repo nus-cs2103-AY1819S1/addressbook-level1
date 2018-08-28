@@ -49,6 +49,7 @@ Format: `add NAME p/PHONE_NUMBER e/EMAIL`
 ====
 Words in `UPPER_CASE` are the parameters. +
 Phone number and email can be in any order but the name must come first.
+Email can be in any case, it will automatically be reformatted to lower case.
 ====
 
 Examples:
