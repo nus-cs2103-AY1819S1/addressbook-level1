@@ -946,7 +946,8 @@ public class AddressBook {
         final String[] decodedPerson = makePersonFromData(
                 extractNameFromPersonString(encoded),
                 extractPhoneFromPersonString(encoded),
-                extractEmailFromPersonString(encoded)
+                extractEmailFromPersonString(encoded),
+                extractTeleFromPersonString(encoded)
         );
         // check that the constructed person is valid
         return isPersonDataValid(decodedPerson) ? Optional.of(decodedPerson) : Optional.empty();
@@ -995,8 +996,9 @@ public class AddressBook {
     private static String extractNameFromPersonString(String encoded) {
         final int indexOfPhonePrefix = encoded.indexOf(PERSON_DATA_PREFIX_PHONE);
         final int indexOfEmailPrefix = encoded.indexOf(PERSON_DATA_PREFIX_EMAIL);
+        final int indexOfTelePrefix = encoded.indexOf(PERSON_DATA_PREFIX_TELE);
         // name is leading substring up to first data prefix symbol
-        int indexOfFirstPrefix = Math.min(indexOfEmailPrefix, indexOfPhonePrefix);
+        int indexOfFirstPrefix = Math.min(indexOfEmailPrefix, Math.min(indexOfPhonePrefix, indexOfTelePrefix));
         return encoded.substring(0, indexOfFirstPrefix).trim();
     }
 
@@ -1009,16 +1011,23 @@ public class AddressBook {
     private static String extractPhoneFromPersonString(String encoded) {
         final int indexOfPhonePrefix = encoded.indexOf(PERSON_DATA_PREFIX_PHONE);
         final int indexOfEmailPrefix = encoded.indexOf(PERSON_DATA_PREFIX_EMAIL);
+        final int indexOfTelePrefix = encoded.indexOf(PERSON_DATA_PREFIX_TELE);
 
         // phone is last arg, target is from prefix to end of string
-        if (indexOfPhonePrefix > indexOfEmailPrefix) {
+        if (indexOfPhonePrefix > indexOfEmailPrefix && indexOfPhonePrefix > indexOfTelePrefix) {
             return removePrefixSign(encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
+                    PERSON_DATA_PREFIX_PHONE);
+
+        // phone is first arg, target is from own prefix to next prefix
+        } else if (indexOfPhonePrefix < indexOfEmailPrefix && indexOfPhonePrefix < indexOfTelePrefix) {
+            return removePrefixSign(
+                    encoded.substring(indexOfPhonePrefix, Math.min(indexOfEmailPrefix, indexOfTelePrefix)).trim(),
                     PERSON_DATA_PREFIX_PHONE);
 
         // phone is middle arg, target is from own prefix to next prefix
         } else {
             return removePrefixSign(
-                    encoded.substring(indexOfPhonePrefix, indexOfEmailPrefix).trim(),
+                    encoded.substring(indexOfPhonePrefix, Math.max(indexOfEmailPrefix, indexOfTelePrefix)).trim(),
                     PERSON_DATA_PREFIX_PHONE);
         }
     }
@@ -1032,17 +1041,53 @@ public class AddressBook {
     private static String extractEmailFromPersonString(String encoded) {
         final int indexOfPhonePrefix = encoded.indexOf(PERSON_DATA_PREFIX_PHONE);
         final int indexOfEmailPrefix = encoded.indexOf(PERSON_DATA_PREFIX_EMAIL);
+        final int indexOfTelePrefix = encoded.indexOf(PERSON_DATA_PREFIX_TELE);
 
         // email is last arg, target is from prefix to end of string
-        if (indexOfEmailPrefix > indexOfPhonePrefix) {
+        if (indexOfEmailPrefix > indexOfPhonePrefix && indexOfEmailPrefix > indexOfTelePrefix) {
             return removePrefixSign(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
                     PERSON_DATA_PREFIX_EMAIL);
 
+        // email is first arg, target is from prefix to next prefix
+        } else if (indexOfEmailPrefix < indexOfPhonePrefix && indexOfEmailPrefix < indexOfTelePrefix) {
+            return removePrefixSign(
+                    encoded.substring(indexOfEmailPrefix, Math.min(indexOfPhonePrefix, indexOfTelePrefix)).trim(),
+                    PERSON_DATA_PREFIX_EMAIL);
         // email is middle arg, target is from own prefix to next prefix
         } else {
             return removePrefixSign(
-                    encoded.substring(indexOfEmailPrefix, indexOfPhonePrefix).trim(),
+                    encoded.substring(indexOfEmailPrefix, Math.max(indexOfPhonePrefix, indexOfTelePrefix)).trim(),
                     PERSON_DATA_PREFIX_EMAIL);
+        }
+    }
+
+    /**
+     * Extracts substring representing Telegram from person string representation
+     *
+     * @param encoded person string representation
+     * @return Telegram argument WITHOUT prefix
+     */
+    private static String extractTeleFromPersonString(String encoded) {
+        final int indexOfPhonePrefix = encoded.indexOf(PERSON_DATA_PREFIX_PHONE);
+        final int indexOfEmailPrefix = encoded.indexOf(PERSON_DATA_PREFIX_EMAIL);
+        final int indexOfTelePrefix = encoded.indexOf(PERSON_DATA_PREFIX_TELE);
+
+        // tele is last arg, target is from prefix to end of string
+        if (indexOfTelePrefix > indexOfPhonePrefix && indexOfTelePrefix > indexOfEmailPrefix) {
+            return removePrefixSign(encoded.substring(indexOfTelePrefix, encoded.length()).trim(),
+                    PERSON_DATA_PREFIX_TELE);
+
+        // tele is first arg, target is from own prefix to next prefix
+        } else if (indexOfTelePrefix < indexOfPhonePrefix && indexOfTelePrefix < indexOfEmailPrefix) {
+            return removePrefixSign(
+                    encoded.substring(indexOfTelePrefix, Math.min(indexOfPhonePrefix, indexOfEmailPrefix)).trim(),
+                    PERSON_DATA_PREFIX_TELE);
+
+        // tele is middle arg, target is from own prefix to next prefix
+        } else {
+            return removePrefixSign(
+                    encoded.substring(indexOfTelePrefix, Math.max(indexOfPhonePrefix, indexOfEmailPrefix)).trim(),
+                    PERSON_DATA_PREFIX_TELE);
         }
     }
 
