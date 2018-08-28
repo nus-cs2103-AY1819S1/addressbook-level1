@@ -14,7 +14,7 @@
   list
 
 ##########################################################
-# test add person command, setup state for futuer tests
+# test add person command, setup state for future tests
 ##########################################################
 
   # should catch invalid args format
@@ -89,6 +89,22 @@
 
   # listing indexes get updated on next request
   delete 1
+  list
+
+##########################################################
+# test edit command
+##########################################################
+
+  # should catch invalid args format
+  edit
+ 
+  # should catch invalid index
+  edit -1 john doe p/88848484 e/test@test.com
+
+  # edit correct person
+  edit 1 Betsy Hoo p/333333 e/betsychoo@nus.edu.sg
+
+  # should list updated person
   list
 
 ##########################################################

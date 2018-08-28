@@ -566,10 +566,9 @@ public class AddressBook {
      */
     private static String executeEditPerson(String commandArgs) {
         ArrayList<String> keywords = extractKeyWordsFromEditPersonArgs(commandArgs);
-        if(keywords.size() != 4) {
+        if(keywords.size() <= 3) {
             return getMessageForInvalidCommandInput(COMMAND_EDIT_WORD, getUsageInfoForEditCommand());
         }
-        final String toReplaceArgs = keywords.get(1) + " " + keywords.get(2) + " " + keywords.get(3);
         if(!isIndexBasedCommandArgsValid(keywords.get(0))) {
             return getMessageForInvalidCommandInput(COMMAND_EDIT_WORD, getUsageInfoForEditCommand());
         }
@@ -579,6 +578,11 @@ public class AddressBook {
         }
         final HashMap<PersonProperty, String> beforePerson = getPersonByLastVisibleIndex(toEditIndex);
 
+        keywords.remove(0);
+        String toReplaceArgs = keywords.remove(0);
+        for(String s: keywords) {
+            toReplaceArgs += " " + s;
+        }
         // try decoding a person from the raw args
         final Optional<HashMap<PersonProperty, String>> decodeResult = decodePersonFromString(toReplaceArgs);
 
@@ -905,7 +909,7 @@ public class AddressBook {
     }
 
     /**
-     * Edit the specific person fromthe addressbook if it is inside. Save any changes to storage file.
+     * Edit the specific person from the addressbook if it is inside. Save any changes to storage file.
      *
      * @param beforePerson the before person inside the address book
      * @param afterPerson the after person inside the address book
