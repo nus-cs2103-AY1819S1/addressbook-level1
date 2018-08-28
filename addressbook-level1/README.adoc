@@ -1,0 +1,27 @@
+= AddressBook (Level 1)
+ifdef::env-github,env-browser[:relfileprefix: docs/]
+
+* This is a CLI (Command Line Interface) Address Book application *written in procedural fashion*.
+* It is a Java sample application intended for students learning Software Engineering while using Java as
+the main programming language.
+* It provides a *reasonably well-written* code example that is *significantly bigger* than what students
+usually write in data structure modules.
+* It can be used to achieve a number of beginner-level <<LearningOutcomes#, Learning Outcomes>> without
+running into the complications of OOP or GUI programmings.
+
+== Site Map
+
+* <<UserGuide#, User Guide>>
+* <<DeveloperGuide#, Developer Guide>>
+* <<LearningOutcomes#, Learning Outcomes>>
+
+== Contributors
+
+The full list of contributors for se-edu can be found https://se-edu.github.io/Team.html[here].
+
+== Contact Us
+
+* *Bug reports, Suggestions*: Post in our https://github.com/se-edu/addressbook-level1/issues[issue tracker]
+if you noticed bugs or have suggestions on how to improve.
+* *Contributing*: We welcome pull requests. Refer to our website https://se-edu.github.io/#contributing[here].
+* If you would like to contact us, refer to https://se-edu.github.io/#contact[our website].
