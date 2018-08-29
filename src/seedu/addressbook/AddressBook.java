@@ -44,7 +44,7 @@ public class AddressBook {
     /**
      * Version info of the program.
      */
-    private static final String VERSION = "AddessBook Level 1 - Version 1.0";
+    private static final String VERSION = "AddressBook Level 1 - Version 1.0";
 
     /**
      * A decorative prefix added to the beginning of lines printed by AddressBook
@@ -208,14 +208,18 @@ public class AddressBook {
 
     public static void main(String[] args) {
         showWelcomeMessage();
-        processProgramArgs(args);
-        loadDataFromStorage();
+        initialProcessing(args);
         while (true) {
             String userCommand = getUserInput();
             echoUserCommand(userCommand);
             String feedback = executeCommand(userCommand);
             showResultToUser(feedback);
         }
+    }
+
+    private static void initialProcessing(String[] args) {
+        processProgramArgs(args);
+        loadDataFromStorage();
     }
 
     /*
@@ -1013,13 +1017,13 @@ public class AddressBook {
         // email is last arg, target is from prefix to end of string
         if (indexOfEmailPrefix > indexOfPhonePrefix) {
             return removePrefixSign(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
-                    PERSON_DATA_PREFIX_EMAIL);
+                    PERSON_DATA_PREFIX_EMAIL).toLowerCase();
 
         // email is middle arg, target is from own prefix to next prefix
         } else {
             return removePrefixSign(
                     encoded.substring(indexOfEmailPrefix, indexOfPhonePrefix).trim(),
-                    PERSON_DATA_PREFIX_EMAIL);
+                    PERSON_DATA_PREFIX_EMAIL).toLowerCase();
         }
     }
 
