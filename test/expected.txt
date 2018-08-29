@@ -219,18 +219,10 @@
 || 
 || ===================================================
 || Enter command: || [Command entered:  delete -1]
-|| Invalid command format: delete 
-|| delete: Deletes a person identified by the index number used in the last find/list call.
-|| 	Parameters: INDEX
-|| 	Example: delete 1
-|| 
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 0]
-|| Invalid command format: delete 
-|| delete: Deletes a person identified by the index number used in the last find/list call.
-|| 	Parameters: INDEX
-|| 	Example: delete 1
-|| 
+|| The person index provided is invalid
 || ===================================================
 || Enter command: || [Command entered:  delete 3]
 || The person index provided is invalid
