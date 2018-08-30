@@ -484,15 +484,20 @@ public class AddressBook {
      */
     private static ArrayList<String[]> getPersonsWithNameContainingAnyKeyword(Collection<String> keywords) {
         final ArrayList<String[]> matchedPersons = new ArrayList<>();
+        //matchedPersons = matchedPersons.stream().map(String::toLowerCase).toCollection(ArrayList::new);
+        Set<String> keys = new HashSet<>();
+        for (String keyword: keywords) {
+            keys.add(keyword.toLowerCase());
+        }
         for (String[] person : getAllPersonsInAddressBook()) {
-            final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            String lowercaseName = getNameFromPerson(person).toLowerCase();
+            final Set<String> wordsInName = new HashSet<>(splitByWhitespace(lowercaseName));
+            if (!Collections.disjoint(wordsInName, keys)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
     }
-
     /**
      * Deletes person identified using last displayed index.
      *
