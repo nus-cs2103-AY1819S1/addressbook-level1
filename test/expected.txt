@@ -66,6 +66,9 @@
 || 	Parameters: INDEX
 || 	Example: delete 1
 || 
+|| sort: Sorts all persons in the list by their name in alphabetical order.
+|| 	Example: sort
+|| 
 || clear: Clears address book permanently.
 || 	Example: clear
 || 
@@ -274,6 +277,27 @@
 || Enter command: || [Command entered:  list]
 || 
 || 0 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  add John Doe p/123 e/johndoe@example.com]
+|| New person added: John Doe, Phone: 123, Email: johndoe@example.com
+|| ===================================================
+|| Enter command: || [Command entered:  add Jane Doe p/321 e/janedoe@example.com]
+|| New person added: Jane Doe, Phone: 321, Email: janedoe@example.com
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. John Doe  Phone Number: 123  Email: johndoe@example.com
+|| 	2. Jane Doe  Phone Number: 321  Email: janedoe@example.com
+|| 
+|| 2 persons found!
+|| ===================================================
+|| Enter command: || [Command entered:  sort]
+|| Address book has been sorted!
+|| ===================================================
+|| Enter command: || [Command entered:  list]
+|| 	1. Jane Doe  Phone Number: 321  Email: janedoe@example.com
+|| 	2. John Doe  Phone Number: 123  Email: johndoe@example.com
+|| 
+|| 2 persons found!
 || ===================================================
 || Enter command: || [Command entered:  exit]
 || Exiting Address Book... Good bye!
