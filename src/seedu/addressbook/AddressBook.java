@@ -261,14 +261,14 @@ public class AddressBook {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
             exitProgram();
         }
-
         if (args.length == 1) {
-            setupGivenFileForStorage(args[0]);
+            storageFilePath = args[0];
+        } else {
+            storageFilePath = DEFAULT_STORAGE_FILEPATH;
+            showToUser(MESSAGE_USING_DEFAULT_FILE);
         }
 
-        if(args.length == 0) {
-            setupDefaultFileForStorage();
-        }
+        setupFileForStorage(storageFilePath);
     }
 
     /**
@@ -276,7 +276,7 @@ public class AddressBook {
      * Creates the file if it is missing.
      * Exits if the file name is not acceptable.
      */
-    private static void setupGivenFileForStorage(String filePath) {
+    private static void setupFileForStorage(String filePath) {
 
         if (!isValidFilePath(filePath)) {
             showToUser(String.format(MESSAGE_INVALID_FILE, filePath));
@@ -293,17 +293,6 @@ public class AddressBook {
     private static void exitProgram() {
         showToUser(MESSAGE_GOODBYE, DIVIDER, DIVIDER);
         System.exit(0);
-    }
-
-    /**
-     * Sets up the storage based on the default file.
-     * Creates file if missing.
-     * Exits program if the file cannot be created.
-     */
-    private static void setupDefaultFileForStorage() {
-        showToUser(MESSAGE_USING_DEFAULT_FILE);
-        storageFilePath = DEFAULT_STORAGE_FILEPATH;
-        createFileIfMissing(storageFilePath);
     }
 
     /**
