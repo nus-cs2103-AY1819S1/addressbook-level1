@@ -116,7 +116,7 @@ public class AddressBook {
     private static final String COMMAND_DELETE_EXAMPLE = COMMAND_DELETE_WORD + " 1";
 
     private static final String COMMAND_SORT_WORD = "sort";
-    private static final String COMMAND_SORT_DESC = "Sorts all persons in the list by alphabetical order.";
+    private static final String COMMAND_SORT_DESC = "Sorts all persons in the list by their name in alphabetical order.";
     private static final String COMMAND_SORT_EXAMPLE = COMMAND_SORT_WORD;
 
     private static final String COMMAND_CLEAR_WORD = "clear";
@@ -1146,7 +1146,7 @@ public class AddressBook {
     /** Returns the string for showing 'sort' command usage instruction */
     private static String getUsageInfoForSortCommand() {
         return String.format(MESSAGE_COMMAND_HELP, COMMAND_SORT_WORD, COMMAND_SORT_DESC) + LS
-                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_SORT_EXAMPLE, COMMAND_LIST_EXAMPLE) + LS;
+                + String.format(MESSAGE_COMMAND_HELP_EXAMPLE, COMMAND_SORT_EXAMPLE) + LS;
     }
 
     /** Returns string for showing 'help' command usage instruction */
