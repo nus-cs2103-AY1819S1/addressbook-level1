@@ -14,14 +14,7 @@ import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Scanner;
-import java.util.Set;
+import java.util.*;
 
 /*
  * NOTE : =============================================================
@@ -382,6 +375,8 @@ public class AddressBook {
             return executeListAllPersonsInAddressBook();
         case COMMAND_DELETE_WORD:
             return executeDeletePerson(commandArgs);
+        case COMMAND_SORT_WORD:
+            return executeSortAddressBook();
         case COMMAND_CLEAR_WORD:
             return executeClearAddressBook();
         case COMMAND_HELP_WORD:
@@ -561,6 +556,16 @@ public class AddressBook {
      */
     private static String getMessageForSuccessfulDelete(String[] deletedPerson) {
         return String.format(MESSAGE_DELETE_PERSON_SUCCESS, getMessageForFormattedPersonData(deletedPerson));
+    }
+
+    /**
+     * Sorts the address book by name in alphabetical order
+     *
+     * @return feedback display message for the operation result
+     */
+    private static String executeSortAddressBook() {
+        sortAddressBook();
+        return MESSAGE_ADDRESSBOOK_SORTED;
     }
 
     /**
@@ -811,6 +816,14 @@ public class AddressBook {
      */
     private static ArrayList<String[]> getAllPersonsInAddressBook() {
         return ALL_PERSONS;
+    }
+
+    /**
+     * Sorts all persons in the address book by alphabetical order.
+     */
+    private static void sortAddressBook() {
+        ALL_PERSONS.sort(Comparator.comparing(otherPerson -> otherPerson[0]));
+        savePersonsToFile(getAllPersonsInAddressBook(), storageFilePath);
     }
 
     /**
