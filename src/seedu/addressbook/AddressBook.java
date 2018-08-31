@@ -501,7 +501,7 @@ public class AddressBook {
 
     private static Set<String> lowercased(Set<String> strings) {
         String[] stringsArray = strings.toArray(new String[0]);
-        for (int i=0; i<stringsArray.length; ++i) {
+        for (int i = 0; i < stringsArray.length; ++i) {
             stringsArray[i] = stringsArray[i].toLowerCase();
         }
         strings.clear();
