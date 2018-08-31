@@ -19,9 +19,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.function.Function;
 
 /*
  * NOTE : =============================================================
@@ -482,15 +484,29 @@ public class AddressBook {
      * @param keywords for searching
      * @return list of persons in full model with name containing some of the keywords
      */
-    private static ArrayList<String[]> getPersonsWithNameContainingAnyKeyword(Collection<String> keywords) {
+    private static ArrayList<String[]> getPersonsWithNameContainingAnyKeyword(Set<String> keywords) {
         final ArrayList<String[]> matchedPersons = new ArrayList<>();
         for (String[] person : getAllPersonsInAddressBook()) {
             final Set<String> wordsInName = new HashSet<>(splitByWhitespace(getNameFromPerson(person)));
-            if (!Collections.disjoint(wordsInName, keywords)) {
+            if (!disjointIgnoreCase(wordsInName, keywords)) {
                 matchedPersons.add(person);
             }
         }
         return matchedPersons;
+    }
+
+    private static boolean disjointIgnoreCase(Set<String> coll1, Set<String> coll2) {
+        return Collections.disjoint(lowercased(coll1), lowercased(coll2));
+    }
+
+    private static Set<String> lowercased(Set<String> strings) {
+        String[] stringsArray = strings.toArray(new String[0]);
+        for (int i=0; i<stringsArray.length; ++i) {
+            stringsArray[i] = stringsArray[i].toLowerCase();
+        }
+        strings.clear();
+        strings.addAll(Arrays.asList(stringsArray));
+        return strings;
     }
 
     /**
