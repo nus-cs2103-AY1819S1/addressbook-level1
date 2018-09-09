@@ -383,6 +383,9 @@ public class AddressBook {
             return getUsageInfoForAllCommands();
         case COMMAND_EXIT_WORD:
             executeExitProgramRequest();
+        case COMMAND_REDO_OPE:
+            executeRedoOperation();
+                  
         default:
             return getMessageForInvalidCommandInput(commandType, getUsageInfoForAllCommands());
         }
@@ -585,6 +588,10 @@ public class AddressBook {
     private static void executeExitProgramRequest() {
         exitProgram();
     }
+    
+    private static void executeRedoOperation() {
+        
+        
 
     /*
      * ===========================================
