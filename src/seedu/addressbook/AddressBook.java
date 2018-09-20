@@ -506,10 +506,23 @@ public class AddressBook {
         return matchedPersons;
     }
 
+    /**
+     * Compare two sets of string
+     *
+     * @param coll1 for first set of strings
+     * @param coll2 for second set of strings
+     * @return true if strings are the same, false otherwise
+     */
     private static boolean disjointIgnoreCase(Set<String> coll1, Set<String> coll2) {
         return Collections.disjoint(lowercased(coll1), lowercased(coll2));
     }
 
+    /**
+     * Convert strings into lowercase
+     *
+     * @param strings for turning into lowercase
+     * @return lowercased strings
+     */
     private static Set<String> lowercased(Set<String> strings) {
         String[] stringsArray = strings.toArray(new String[0]);
         for (int i = 0; i < stringsArray.length; ++i) {
@@ -1023,12 +1036,12 @@ public class AddressBook {
 
         // phone is last arg, target is from prefix to end of string
         if (indexOfPhonePrefix > indexOfEmailPrefix) {
-            return removePrefixSign(encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
+            return removePrefix(encoded.substring(indexOfPhonePrefix, encoded.length()).trim(),
                     PERSON_DATA_PREFIX_PHONE);
 
         // phone is middle arg, target is from own prefix to next prefix
         } else {
-            return removePrefixSign(
+            return removePrefix(
                     encoded.substring(indexOfPhonePrefix, indexOfEmailPrefix).trim(),
                     PERSON_DATA_PREFIX_PHONE);
         }
@@ -1046,12 +1059,12 @@ public class AddressBook {
 
         // email is last arg, target is from prefix to end of string
         if (indexOfEmailPrefix > indexOfPhonePrefix) {
-            return removePrefixSign(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
+            return removePrefix(encoded.substring(indexOfEmailPrefix, encoded.length()).trim(),
                     PERSON_DATA_PREFIX_EMAIL);
 
         // email is middle arg, target is from own prefix to next prefix
         } else {
-            return removePrefixSign(
+            return removePrefix(
                     encoded.substring(indexOfEmailPrefix, indexOfPhonePrefix).trim(),
                     PERSON_DATA_PREFIX_EMAIL);
         }
@@ -1178,14 +1191,14 @@ public class AddressBook {
      */
 
     /**
-     * Removes sign(p/, d/, etc) from parameter string
+     * Removes prefix from the given fullString if prefix occurs at the start of the string.
      *
-     * @param s  Parameter as a string
-     * @param sign  Parameter sign to be removed
-     * @return  string without the sign
+     * @param fullString  Parameter as a string
+     * @param prefix  Parameter prefix to be removed
+     * @return  fullString without the prefix
      */
-    private static String removePrefixSign(String s, String sign) {
-        return s.replace(sign, "");
+    private static String removePrefix(String fullString, String prefix) {
+        return fullString.replaceFirst(prefix, "");
     }
 
     /**
