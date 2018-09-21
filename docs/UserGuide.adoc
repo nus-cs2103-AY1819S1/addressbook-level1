@@ -64,7 +64,7 @@ Format: `list`
 
 === Listing all persons by alphabetical order: `sort`
 
-Shows a list of persons, as an indexed list, in alphabetical order
+Shows a list of persons, as an indexed list, in alphabetical order. +
 Format: `sort`
 
 === Finding a person by keyword `find`
