@@ -43,7 +43,7 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 === Adding a person: `add`
 
 Adds a person to the address book. +
-Format: `add NAME p/PHONE_NUMBER e/EMAIL`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL`
 
 [NOTE]
 ====
@@ -53,8 +53,8 @@ Phone number and email can be in any order but the name must come first.
 
 Examples:
 
-* `add John Doe p/98765432 e/johnd@gmail.com`
-* `add Betsy Crowe e/bencrowe@gmail.com p/1234567`
+* `add n/John Doe p/98765432 e/johnd@gmail.com`
+* `add n/Betsy Crowe e/bencrowe@gmail.com p/1234567`
 
 === Listing all persons: `list`
 
