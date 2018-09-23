@@ -43,7 +43,7 @@ Help is also shown if you enter an incorrect command e.g. `abcd`
 === Adding a person: `add`
 
 Adds a person to the address book. +
-Format: `add NAME p/PHONE_NUMBER e/EMAIL`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL`
 
 [NOTE]
 ====
@@ -53,14 +53,35 @@ Phone number and email can be in any order but the name must come first.
 
 Examples:
 
-* `add John Doe p/98765432 e/johnd@gmail.com`
-* `add Betsy Crowe e/bencrowe@gmail.com p/1234567`
+* `add n/John Doe p/98765432 e/johnd@gmail.com`
+* `add n/Betsy Crowe e/bencrowe@gmail.com p/1234567`
+
+=== Editing a person: `edit`
+
+Edits a person in the address book. +
+Format: `edit INDEX n/NAME p/PHONE_NUMBER e/EMAIL`
+
+[NOTE]
+====
+Words in `UPPER_CASE` are the parameters. +
+Phone number and email can be in any order but the index must come first, followed by name.
+====
+
+Examples:
+
+* `edit 1 n/John Doe p/98765432 e/johnd@gmail.com`
+* `edit 2 n/Betsy Crowe e/bencrowe@gmail.com p/1234567`
 
 === Listing all persons: `list`
 
 Shows a list of persons, as an indexed list, in the order they were added to the address book,
 oldest first. +
 Format: `list`
+
+=== Listing all persons by alphabetical order: `sort`
+
+Shows a list of persons, as an indexed list, in alphabetical order. +
+Format: `sort`
 
 === Finding a person by keyword `find`
 
@@ -69,14 +90,14 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 
 [NOTE]
 ====
-The search is case sensitive, the order of the keywords does not matter, only the name is searched,
+The search is case insensitive, the order of the keywords does not matter, only the name is searched,
 and persons matching at least one keyword will be returned (i.e. `OR` search).
 ====
 
 Examples:
 
-* `find John` +
-Returns `John Doe` but not `john`
+* `find John` and `find john` +
+Returns `John Doe`
 
 * `find Betsy Tim John` +
 Returns any person having names `Betsy`, `Tim`, or `John`
